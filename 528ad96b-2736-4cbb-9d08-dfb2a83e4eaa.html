@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sherlock Holmes Chapter One</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('528ad96b-2736-4cbb-9d08-dfb2a83e4eaa/3ec6ea00-2731-4ae0-880f-78db1cb0f6bf.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="528ad96b-2736-4cbb-9d08-dfb2a83e4eaa/129847f1-bffc-46b0-b543-370ce1f913d4.png"/> Sherlock Holmes Chapter One</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="528ad96b-2736-4cbb-9d08-dfb2a83e4eaa/eb6412a0-3a8b-4340-bb5f-5ee5ca483528.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>6h 2m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-19.05.2023">19.05.2023</a> 20:08:49</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-15.12.2023">15.12.2023</a> 17:11:24</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-12.02.2024">12.02.2024</a> 21:49:46</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-16.11.2021">16.11.2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Frogwares">Frogwares</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Frogwares">Frogwares</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1137300/Sherlock_Holmes_Chapter_One/" target="_blank">Steam</a><br/><a href="https://www.epicgames.com/store/en-US/product/sherlock-holmes-chapter-one/home" target="_blank">Epic</a><br/><a href="https://www.gog.com/game/sherlock_holmes_chapter_one" target="_blank">GOG</a><br/><a href="https://www.facebook.com/SherlockHolmesGames" target="_blank">Facebook</a><br/><a href="https://bakerstreet.fandom.com/wiki/Sherlock_Holmes:_Chapter_One" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/Sherlock_Holmes_Chapter_One" target="_blank">Wikipedia</a><br/><a href="https://www.instagram.com/frogwares/" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/user/Frogwares" target="_blank">YouTube</a><br/><a href="https://www.twitch.tv/directory/game/Sherlock%20Holmes%3A%20Chapter%20One" target="_blank">Twitch</a><br/><a href="https://frogwares.com/frogwares-games/" target="_blank">Official</a><br/><a href="https://twitter.com/frogwares" target="_blank">Twitter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<a href="https://steamcommunity.com/linkfilter/?u=https%3A%2F%2Fdiscord.gg%2FfsTrd8DXSW" target="_blank" rel=" noopener"  ><img src="https://cdn.akamai.steamstatic.com/steam/apps/1137300/extras/discord_button.jpg?t=1670417138" /></a><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1137300/extras/made_in_ukraine.jpg?t=1670417138" /><br><br>As Sherlock, your legacy is written by the decisions you make in this open world detective adventure. Deception, violence, and deduction are just a few resources in your arsenal—your mysterious companion and sounding board, Jon, is another.<br><br>Whether you choose brute force to solve problems or stay one step ahead of your enemies by using your wits to spot vulnerabilities, you decide what each situation demands as you hone your investigative skills. It’s time to confront your past so you can become the legend you’re destined to be.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1137300/extras/ezgif.com-video-to-gif_(5).gif?t=1670417138" /><h2 class="bb_tag">KEY PILLARS </h2><br><strong>The Man Before:</strong> As a cavalier young Sherlock on the precipice of adulthood, you’ll earn your reputation in a way no game or story has explored before. We’ve never seen the youthful arrogance and naiveté of the man before the legend—now you’re living it.<br><br><strong>Global Investigation:</strong> You never know where your next clue will come from. Explore and exploit the entire city in your pursuit of truth, using clues, rumors, disguises, tags, and pinned evidence to build a solid case within your mind palace.<br><br><strong>And Stay Down:</strong> Weapons might help you in a pinch, but there’s something to be said for style—and you have it in spades. Spot enemy vulnerabilities with your brilliant observation skills, or exploit the environment to take someone down while keeping your own hands clean.<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1137300/extras/combat.gif?t=1670417138" /><br><br><strong>A Different Jon:</strong> Before John Watson, there was a different Jon - your best and only friend. But who is he, really?<br><br><strong>A Darkening Tide:</strong> Set in the 19th century, the vibrant island in the Mediterranean promises anything but paradise. Political corruption and crime run rampant while the islanders cling to tradition and eschew outsiders, making your job even more difficult.<br><br><strong>Truth and Lies:</strong> There are two sides to every story, and the proud islanders have their own ideas about truth and justice. It’s up to you to decide whether uncovering the truth will do more harm than good—and how that will shape the man you’ll become.<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1137300/extras/ezgif.com-video-to-gif.gif?t=1670417138" />
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

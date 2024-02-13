@@ -1,0 +1,316 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Superhero League of Hoboken</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('1f03d300-05a3-457e-8fcd-523b71a38977/f25bbc3b-bce3-404b-a7fa-ac868b242fbf.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="1f03d300-05a3-457e-8fcd-523b71a38977/183fcca4-cf45-4349-a36f-dd10d3dd66e8.png"/> Superhero League of Hoboken</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="1f03d300-05a3-457e-8fcd-523b71a38977/6197f1a9-2cb3-4040-b37e-4cddc4632512.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-15.12.2023">15.12.2023</a> 16:52:38</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-12.02.2024">12.02.2024</a> 21:49:35</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Plan to Play">Plan to Play</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-01.01.1994">01.01.1994</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Puzzle">Puzzle</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Legend Entertainment">Legend Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Legend Entertainment">Legend Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.gog.com/game/superhero_league_of_hoboken" target="_blank">GOG</a><br/><a href="https://store.steampowered.com/app/1104470/Super_Hero_League_of_Hoboken" target="_blank">Steam</a><br/><a href="http://pikointeractive.com" target="_blank">Official</a><br/><a href="https://www.twitch.tv/directory/game/Superhero%20League%20of%20Hoboken" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					The United States is a nightmareland of toxic waste, melted ice caps, and desperate shortages of oat bran. Horrible mutations roam the countryside... monsters spawned of radiation, environmental toxins, and unregulated bio-engineering. But in a tiny corner of New Jersey, a small group of Superheroes has banded together. Their mission: to nurture the rebirth of a new society, to ease the suffering of the dark age, and to provide a place where Superheroes can always find a date on Saturday night.<br>
+<br>
+<b>Lead a hilarious band of superheroes</b> on a dangerous quest to defeat the evil <b>Doctor Entropy</b>. Select from League members including <b>Tropical Oil Man</b> (can raise opponent's cholesterol level), <b>Zaniac</b> (the power to confuse) and <b>Captain Excitement</b> (puts animals to sleep).<br>
+<br>
+<b>Battle ferocious Aerobots</b>, flame-throwing robotic exercise teachers (when they say, "Feel the burn", they mean it). Fight the dreaded <b>Albino Rhino</b> and 30 other wacky mutant including <b>Cy Young Cyborgs</b>, <b>Screaming Meemies</b>, <b>Cruise Mistletoes</b>, <b>Junk Bond Amoebas</b> and the awesome <b>King Kong Salmon</b>, who return to the top of the empire State Building to spawn!<br>
+<br>
+<b>Six levels of adventure!</b> From <b>Three Mile Island to Atlantic City</b>, society is struggling to climb back up the ladder of civilization, while Doctor Entropy is busy sawing off the rungs! A <b>ground-breaking mix</b> of <b>adventure gaming</b> and <b>role-playing</b>!
+<br>
+<br>
+<ul>
+<li>Design by award-winning game-god Steve Meretzky</li>
+<li>Battle with Lawyers, Supermoms, Cy Young Cyborgs and Steroid Men. Over 31 more flavors of enemies to lick!</li>
+<li>Wield Ginsu Knives, nuclear-tipped Brass Knuckles, cyanide-laced Silly String, and more than 50 other implements of destruction (including the terrifying Slinky of Death)!</li>
+<li>Criss-cross the US eastern seaboard from Buffalo to Atlantic City, Three Mile island to Manhattan</li>
+</ul>
+<header>
+  <h4>Throwback Thursday Recommendation</h4>
+</header>
+<hr><br>
+<img alt="" src="https://items.gog.com/news/tt_ribbon_top.png"><br><br>
+<b>We share the earnest reasons that make a classic game so dear to us!</b>
+<br><br>
+<i><b>Recommended by Frank Cifaldi from The Video Game History Foundation</b> I'm a sucker for superhero parody, and I'm also a sucker for 90s point-and-click adventure games, so this is a hard one for me to resist. On top of that, the game is designed by Steve Meretzky, an absolute legend. The only thing holding this one back is a bit of interface and design awkwardness due to its age (you might want to have a walkthrough on standby), but I don't think that's going to be a problem for most GOG players!</i>
+<br>
+<b>Recommended by Judas, Technical Customer Support Specialist at GOG</b>
+<br>
+<i>If you ever wanted to drown someone in red tape or raise their cholesterol to dangerous levels or deal with crazed sheep while looking inside pizza boxes without opening them then why not give Superhero League of Hoboken a try? The game features turn-based dungeon crawler style combat as well as some point-and-click elements to great effect. Can't recommend it enough!</i>
+<br><br>
+<b>Click <a href="https://www.gog.com/partner/throwback_thursday">here</a> to discover the Throwback Thursday collection of games.</b>
+<br>
+<img alt="" src="https://items.gog.com/news/tt_ribbon_bottom.png">
+<hr><br>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
