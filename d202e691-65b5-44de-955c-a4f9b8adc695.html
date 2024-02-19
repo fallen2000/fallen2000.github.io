@@ -25,17 +25,14 @@ html {
   margin: 0;                                          /* no margins */
   background-color: black;                            /* black background */
   vertical-align: middle;                             /* align vertical middle */
-}
-
-.title img {
-	vertical-align: middle;                           /* images in title aligned vertical middle */
+  height: 48px;
 }
 
 .title {
 	width: 100%;                                      /* title container width 100% */
 	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
     grid-row: 1;                                      /* row 1 */
-
+	height: 48px;
 }
 .cards {                                              /* empty not used here */
 }
@@ -86,10 +83,6 @@ html {
 .detailstable {
   width: 100%;                                         /* set to full width of details */
   padding: 5px;                                        /* add some padding */
-}
-
-.details img {
-	max-width: 100%;                                   /* make sure images don't overflow in width on details */
 }
 
 .descriptiontitle {
@@ -175,11 +168,11 @@ a:active {
 
 		</style>
 	</head>
-	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('d202e691-65b5-44de-955c-a4f9b8adc695/5f996919-b2e4-4380-b935-7e1a95ab09e6.jpg');">
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
 		<div class="cards">
 			<div class="card">
 				<div class="title">
-					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img alt="icon" Height="48" class="lozad" data-src="d202e691-65b5-44de-955c-a4f9b8adc695/54e76f8e-6d3f-46dc-9dca-f85aa2338c7a.png"/> Tomb Raider</h2>
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Tomb Raider</h2>
 				</div>
 				<div class="detailstitle">
 				<H3>Details</H3>
@@ -188,11 +181,7 @@ a:active {
 					<div style="overflow: auto;">
 						<TABLE class="detailstable">
 							<col style="width:50%" />
-							<col style="width:50%" />
-							<TR>
-								<TD style="text-align:center" Colspan="2"><img alt="cover" Height="175" class="lozad" data-src="d202e691-65b5-44de-955c-a4f9b8adc695/5339d1d4-489f-4632-be7b-60af947bbdc7.jpg"/></TD>
-							</TR>
-							<TR>
+							<col style="width:50%" />							<TR>
 								<TD>Playtime</TD>
 								<TD>Not Played</TD>
 							</TR>
@@ -275,10 +264,5 @@ a:active {
 				</div>
 			</div>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
-		<script>
-			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-			observer.observe();
-		</script>
-	</body>	
+	</body>
 </html>

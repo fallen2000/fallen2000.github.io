@@ -25,17 +25,14 @@ html {
   margin: 0;                                          /* no margins */
   background-color: black;                            /* black background */
   vertical-align: middle;                             /* align vertical middle */
-}
-
-.title img {
-	vertical-align: middle;                           /* images in title aligned vertical middle */
+  height: 48px;
 }
 
 .title {
 	width: 100%;                                      /* title container width 100% */
 	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
     grid-row: 1;                                      /* row 1 */
-
+	height: 48px;
 }
 .cards {                                              /* empty not used here */
 }
@@ -86,10 +83,6 @@ html {
 .detailstable {
   width: 100%;                                         /* set to full width of details */
   padding: 5px;                                        /* add some padding */
-}
-
-.details img {
-	max-width: 100%;                                   /* make sure images don't overflow in width on details */
 }
 
 .descriptiontitle {
@@ -175,11 +168,11 @@ a:active {
 
 		</style>
 	</head>
-	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('df8e1f50-b902-4034-90a4-94d9a58fb047/0ff73c5c-a4be-4d5d-940c-6a63e75b26da.jpg');">
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
 		<div class="cards">
 			<div class="card">
 				<div class="title">
-					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img alt="icon" Height="48" class="lozad" data-src="df8e1f50-b902-4034-90a4-94d9a58fb047/97ed2abb-02f1-4540-ad33-406e9106cdfe.png"/> The Elder Scrolls II: Daggerfall</h2>
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> The Elder Scrolls II: Daggerfall</h2>
 				</div>
 				<div class="detailstitle">
 				<H3>Details</H3>
@@ -188,17 +181,13 @@ a:active {
 					<div style="overflow: auto;">
 						<TABLE class="detailstable">
 							<col style="width:50%" />
-							<col style="width:50%" />
-							<TR>
-								<TD style="text-align:center" Colspan="2"><img alt="cover" Height="175" class="lozad" data-src="df8e1f50-b902-4034-90a4-94d9a58fb047/3aa3af5d-bd7b-40ab-83f5-d7431c761407.jpg"/></TD>
-							</TR>
-							<TR>
+							<col style="width:50%" />							<TR>
 								<TD>Playtime</TD>
-								<TD>Not Played</TD>
+								<TD>6s</TD>
 							</TR>
 							<TR>
 								<TD>Last Activity</TD>
-								<TD><a href="#quicklink-Never">Never</a> </TD>
+								<TD><a href="#quicklink-17.02.2024">17.02.2024</a> 11:24:42</TD>
 							</TR>
 							<TR>
 								<TD>Added</TD>
@@ -277,10 +266,5 @@ The much-awaited sequel to the critically-acclaimed Arena,  Daggerfall builds on
 				</div>
 			</div>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
-		<script>
-			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-			observer.observe();
-		</script>
-	</body>	
+	</body>
 </html>
